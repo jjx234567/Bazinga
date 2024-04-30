@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h1>videos</h1>
+<div class="row">
+{% for video in videos %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            {% if video.image %}
+                <img class="card-img-top" src="{{ video.image.url }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ video.title }}</h5>
+                <p class="card-text">{{ video.description }}</p>
+                <a href="{% url 'video_detail' video.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+                <a href="{{video.link}}"target=”_blank”>{{ video.link }}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
